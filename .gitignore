@@ -209,6 +209,19 @@ tempCodeRunnerFile.py
 # PyPI configuration file
 .pypirc
 
+# Node / Electron
+node_modules/
+.npm-cache/
+frontend/dist/
+electron/dist/
+release/
+
+# OpenFrame local data
+OpenFrame Projects/
+*.err
+*.mp4
+*.mov
+
 # Marimo
 marimo/_static/
 marimo/_lsp/

@@ -1,0 +1,18 @@
+{
+  "name": "openframe",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open-source stop-motion capture software with a Python backend and Electron React frontend.",
+  "workspaces": [
+    "frontend",
+    "electron"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:backend": "python -m uvicorn openframe_backend.main:app --app-dir backend/src --reload --host 127.0.0.1 --port 4777",
+    "dev:frontend": "npm --workspace @openframe/frontend run dev -- --host 127.0.0.1",
+    "dev:electron": "npm --workspace @openframe/electron run dev",
+    "build": "npm --workspace @openframe/frontend run build && npm --workspace @openframe/electron run build",
+    "test": "python -m pytest backend/tests"
+  }
+}

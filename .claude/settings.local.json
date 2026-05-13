@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test -d C:\\\\\\\\_csmart\\\\\\\\Projects\\\\\\\\openframe\\\\\\\\frontend\\\\\\\\node_modules)",
+      "Bash(.venv/Scripts/python -m pytest backend/tests -q)"
+    ]
+  }
+}
