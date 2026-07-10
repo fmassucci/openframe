@@ -14,6 +14,8 @@ export type Frame = {
   url: string;
 };
 
+export type CameraId = "mock" | "canon_5d_mark_ii" | "digicamcontrol";
+
 export type CameraStatus = {
   camera_id: string | null;
   label: string | null;

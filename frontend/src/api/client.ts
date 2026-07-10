@@ -1,4 +1,4 @@
-import type { AppConfig, CameraStatus, Frame, Project } from "../types";
+import type { AppConfig, CameraId, CameraStatus, Frame, Project } from "../types";
 
 const fallbackBackendUrl = "http://127.0.0.1:4777";
 
@@ -63,7 +63,7 @@ export const apiClient = {
       body: JSON.stringify({ fps })
     }),
   getCameraStatus: () => request<CameraStatus>("/api/camera/status"),
-  connectCamera: (cameraId: "mock" | "canon_5d_mark_ii") =>
+  connectCamera: (cameraId: CameraId) =>
     request<CameraStatus>("/api/camera/connect", {
       method: "POST",
       body: JSON.stringify({ camera_id: cameraId })

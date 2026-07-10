@@ -18,6 +18,7 @@ class CameraStatus(StrEnum):
 class CameraKind(StrEnum):
     MOCK = "mock"
     CANON_5D_MARK_II = "canon_5d_mark_ii"
+    DIGICAMCONTROL = "digicamcontrol"
 
 
 @dataclass(frozen=True)

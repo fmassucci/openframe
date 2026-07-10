@@ -9,6 +9,7 @@ import { ProjectMenu } from "./components/ProjectMenu";
 import { TopBar } from "./components/TopBar";
 import type {
   AppConfig,
+  CameraId,
   CameraStatus,
   Frame,
   OnionSkinSettings,
@@ -109,7 +110,7 @@ export function App() {
     });
   }
 
-  async function connectCamera(cameraId: "mock" | "canon_5d_mark_ii") {
+  async function connectCamera(cameraId: CameraId) {
     await runBusy(async () => {
       const status = await apiClient.connectCamera(cameraId);
       setCameraStatus(status);

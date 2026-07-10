@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     backend_port: int = 4777
     projects_dir: Path | None = None
     default_camera: str = "mock"
+    digicamcontrol_url: str = "http://127.0.0.1:5513"
 
     def resolved_projects_dir(self) -> Path:
         return self.projects_dir or (Path.home() / "OpenFrame Projects")

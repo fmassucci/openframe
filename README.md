@@ -58,6 +58,18 @@ Closing the Electron app window stops the development runner, which also stops t
 
 - `mock`: Generated live-view frames and stills for development.
 - `canon_5d_mark_ii`: Canon EOS 5D Mark II adapter using the `gphoto2` command-line tool.
+- `digicamcontrol`: Windows-only adapter that talks to [DigiCamControl](https://digicamcontrol.com/) over its localhost HTTP API. Works without rebinding the Windows USB driver, so File Explorer and Canon EOS Utility keep working when OpenFrame is not actively connected.
+
+Select the camera at runtime with the `OPENFRAME_DEFAULT_CAMERA` env var (e.g. `OPENFRAME_DEFAULT_CAMERA=digicamcontrol`).
+
+### DigiCamControl setup (Windows)
+
+1. Install DigiCamControl from https://digicamcontrol.com/ and launch it.
+2. In DigiCamControl, open **File → Settings → Webserver** and tick **Enable webserver**. Leave the port at `5513` (matches the default `OPENFRAME_DIGICAMCONTROL_URL`).
+3. Connect the Canon 5D Mark II via USB and confirm DigiCamControl shows it in the camera list.
+4. Start OpenFrame with `OPENFRAME_DEFAULT_CAMERA=digicamcontrol`. The adapter expects DigiCamControl to be running with the web server enabled; if it isn't, `connect()` returns a clear error.
+
+DigiCamControl holds the USB session while OpenFrame is connected, so File Explorer can't browse the SD card during a session. Closing OpenFrame (or DigiCamControl) releases the camera back to Windows within a second.
 
 ## Architecture
 

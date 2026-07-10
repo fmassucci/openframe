@@ -1,4 +1,4 @@
-import type { CameraStatus, Project } from "../types";
+import type { CameraId, CameraStatus, Project } from "../types";
 
 type ProjectMenuProps = {
   cameraStatus: CameraStatus;
@@ -6,7 +6,7 @@ type ProjectMenuProps = {
   isBusy: boolean;
   message: string | null;
   onCaptureFrame: () => void;
-  onConnectCamera: (cameraId: "mock" | "canon_5d_mark_ii") => void;
+  onConnectCamera: (cameraId: CameraId) => void;
   onDisconnectCamera: () => void;
   onExportVideo: () => void;
   onRequestNewProject: () => void;
@@ -143,6 +143,18 @@ export function ProjectMenu({
           </button>
           <button
             type="button"
+            onClick={() => onConnectCamera("digicamcontrol")}
+            disabled={isBusy}
+            className={
+              cameraStatus.camera_id === "digicamcontrol"
+                ? "camera-grid__btn camera-grid__btn--active"
+                : "camera-grid__btn"
+            }
+          >
+            DigiCamControl
+          </button>
+          <button
+            type="button"
             onClick={() => onConnectCamera("canon_5d_mark_ii")}
             disabled={isBusy}
             className={
@@ -151,7 +163,7 @@ export function ProjectMenu({
                 : "camera-grid__btn"
             }
           >
-            Canon 5D II
+            Canon (gphoto2)
           </button>
         </div>
 
